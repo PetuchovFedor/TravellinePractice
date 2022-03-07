@@ -23,7 +23,7 @@
         public override void GetComponentInfo()
         {
             base.GetComponentInfo();
-            Console.WriteLine($"Motherboard: {Model}, number of memory slots {numberMemorySlots}, maximum memory capacity {maximumMemoryCapacity}");
+            Console.WriteLine($"Motherboard: model {Model}, number of memory slots {numberMemorySlots}, maximum memory capacity {maximumMemoryCapacity}");
         }
     }
 }

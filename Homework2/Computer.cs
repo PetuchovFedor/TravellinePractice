@@ -1,32 +1,26 @@
 ﻿namespace Homework2
 {
-    public class Computer
+    public class Computer: IGetAndCheckComponentInfo
     {
-        public void WriteComponentInfo()
-        {
-            try
+         List<IGetAndCheckComponentInfo> components = new List<IGetAndCheckComponentInfo>()
+         {
+            new Esonic(),
+            new AMD(),
+            new ASUS(),
+            new NeoForza()
+         };
+        public void GetComponentInfo()
+        {            
+            foreach (IGetAndCheckComponentInfo component in components)
             {
-                Console.WriteLine("Computer component information:");
-                List<IGetComponentInfo> components = new List<IGetComponentInfo>()
-                {
-                    new Esonic(),
-                    new AMD(),
-                    new ASUS(),
-                    new NeoForza()
-                };
-                foreach (IComponentCheck component in components)
-                {
-                    component.ComponentCkeck();                  
-                }
-                foreach (var component in components)
-                {
-                    component.GetComponentInfo();
-                    Console.WriteLine();
-                }               
+                component.GetComponentInfo();
             }
-            catch (ArgumentException ex)
+        }
+        public void ComponentCkeck()
+        {          
+            foreach (IGetAndCheckComponentInfo component in components)
             {
-                Console.WriteLine(ex);
+                component.ComponentCkeck();                
             }
         }
     }

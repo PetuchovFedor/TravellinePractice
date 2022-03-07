@@ -1,17 +1,17 @@
 ﻿namespace Homework2
 {
-    public abstract class RAM: IGetComponentInfo, IComponentCheck
+    public abstract class MotherBoard: IGetAndCheckComponentInfo
     {
         public abstract string Model { get; set; }
-        public abstract int memoryModuleCapacity { get; set; }
-        public abstract int numberModules { get; set; }
+        public abstract int numberMemorySlots { get; set; }
+        public abstract int maximumMemoryCapacity { get; set; }
         public virtual void GetComponentInfo()
         {
 
         }
         public void ComponentCkeck()
         {
-            if (Model == null || memoryModuleCapacity <= 0 || numberModules <= 0)
+            if (Model == null || numberMemorySlots <= 0 || maximumMemoryCapacity <= 0)
             {
                 throw new ArgumentException("Data entered incorrectly");
             }

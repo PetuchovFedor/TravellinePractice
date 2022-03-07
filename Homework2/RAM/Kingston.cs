@@ -8,8 +8,8 @@
             get => model;
             set => model = value;
         }
-        int memorymodulecapacity = 5;
-        public override int memoryModuleCapacity
+        double memorymodulecapacity = 5;
+        public override double memoryModuleCapacity
         {
             get => memorymodulecapacity;
             set => memorymodulecapacity = value;
