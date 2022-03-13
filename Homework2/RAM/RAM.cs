@@ -1,20 +1,16 @@
-﻿namespace Homework2
+﻿namespace Homework2.RAM
 {
-    public abstract class RAM: IGetAndCheckComponentInfo
+    public class RAM : IGetInfo
     {
-        public abstract string Model { get; set; }
-        public abstract double memoryModuleCapacity { get; set; }
-        public abstract int numberModules { get; set; }
-        public virtual void GetComponentInfo()
+        private readonly string _model;
+        public string Model => _model;
+        public RAM( string model )
         {
-
+            _model = model ?? throw new ArgumentException( nameof( model ) );
         }
-        public void ComponentCkeck()
+        public virtual string GetComponentInfo()
         {
-            if (Model == null || memoryModuleCapacity <= 0 || numberModules <= 0)
-            {
-                throw new ArgumentException("Data entered incorrectly");
-            }
+            return $"RAM: {_model}";
         }
     }
 }

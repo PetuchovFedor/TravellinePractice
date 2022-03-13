@@ -1,20 +1,16 @@
-﻿namespace Homework2
+﻿namespace Homework2.Motherboard
 {
-    public abstract class MotherBoard: IGetAndCheckComponentInfo
+    public class MotherBoard : IGetInfo
     {
-        public abstract string Model { get; set; }
-        public abstract int numberMemorySlots { get; set; }
-        public abstract int maximumMemoryCapacity { get; set; }
-        public virtual void GetComponentInfo()
+        private readonly string _model;
+        public string Model => _model;
+        public MotherBoard(string model)
         {
-
+            _model = model ?? throw new ArgumentException(nameof(model));
         }
-        public void ComponentCkeck()
+        public virtual string GetComponentInfo()
         {
-            if (Model == null || numberMemorySlots <= 0 || maximumMemoryCapacity <= 0)
-            {
-                throw new ArgumentException("Data entered incorrectly");
-            }
+            return $"Motherboard: {_model}";
         }
     }
 }

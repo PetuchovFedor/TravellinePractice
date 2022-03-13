@@ -1,20 +1,16 @@
-﻿namespace Homework2
+﻿namespace Homework2.Procesor
 {
-    public abstract class Procesor: IGetAndCheckComponentInfo
+    public class Procesor : IGetInfo
     {
-        public abstract string Model { get; set; }
-        public abstract int numberCores { get; set; }
-        public abstract double Frequency { get; set; }
-        public virtual void GetComponentInfo()
+        private readonly string _model;
+        public string Model => _model;
+        public Procesor( string model )
         {
-
+            _model = model ?? throw new ArgumentException( nameof( model ) );
         }
-        public void ComponentCkeck()
+        public virtual string GetComponentInfo()
         {
-            if (Model == null || numberCores <= 0 || Frequency <= 0)
-            {
-                throw new ArgumentException("Data entered incorrectly");
-            }
+            return $"Processor: {_model}";
         }
     }
 }

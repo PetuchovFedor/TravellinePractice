@@ -1,29 +1,22 @@
-﻿namespace Homework2
+﻿namespace Homework2.Procesor
 {
-    public class Intel: Procesor
+    public class Intel : Procesor
     {
-        string model = "Intel Core i3 9100F";
-        public override string Model
+        public int CoresCount { get; set; }
+        private double Frequancy { get; set; }
+        public Intel( string model, int corescount, double frequancy ) : base( model )
         {
-            get => model;
-            set => model = value;
+            if ( corescount <= 0 || frequancy <= 0 )
+            {
+                throw new ArgumentException( "Data entered incorrectly" );
+            }
+            CoresCount = corescount;
+            Frequancy = frequancy;
+
         }
-        int numbercores = 4;
-        public override int numberCores
+        public override string GetComponentInfo()
         {
-            get => numbercores;
-            set => numbercores = value;
-        }
-        double frequency = 3.6;
-        public override double Frequency
-        {
-            get => frequency;
-            set => frequency = value;
-        }
-        public override void GetComponentInfo()
-        {
-            base.GetComponentInfo();
-            Console.WriteLine($"Processor: model {Model}, number of cores {numberCores}, frequency {Frequency}");
+            return $"{base.GetComponentInfo()}, number of cores {CoresCount}, frequency {Frequancy}";
         }
     }
 }

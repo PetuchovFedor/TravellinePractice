@@ -1,29 +1,21 @@
-﻿namespace Homework2
+﻿namespace Homework2.VideoCard
 {
-    public class ASUS: VideoCard
+    public class ASUS : VideoCard
     {
-        string model = "ASUS GeForce GT 710 Silent LP";
-        public override string Model
+        public int VideoMemoryCapacity { get; set; } 
+        public double MaximumMemoryBandwidth { get; set; }
+        public ASUS( string model, int videomemorycapacity, double maximummemorybandwidth ) : base( model )
         {
-            get => model;
-            set => model = value;
+            if (  videomemorycapacity <= 0 || maximummemorybandwidth <= 0 )
+            {
+                throw new ArgumentException( "Data entered incorrectly" );
+            }
+            VideoMemoryCapacity = videomemorycapacity;
+            MaximumMemoryBandwidth = maximummemorybandwidth;
         }
-        int videomemorycapacity = 1;
-        public override int videoMemoryCapacity
+        public override string GetComponentInfo()
         {
-            get => videomemorycapacity;
-            set => videomemorycapacity = value;
-        }
-        double maximummemorybandwidth = 21;
-        public override double maximumMemoryBandwidth
-        {
-            get => maximummemorybandwidth;
-            set => maximummemorybandwidth = value;
-        }
-        public override void GetComponentInfo()
-        {
-            base.GetComponentInfo();
-            Console.WriteLine($"Videocard: model {Model}, video memory capacity {videoMemoryCapacity}, maximum memory bandwigth {maximumMemoryBandwidth}");
+            return $"{base.GetComponentInfo()}, video memory capacity {VideoMemoryCapacity}, maximum memory bandwigth {MaximumMemoryBandwidth}";
         }
     }
 }

@@ -1,29 +1,21 @@
-﻿namespace Homework2
+﻿namespace Homework2.Motherboard
 {
-    public class ASRock: MotherBoard
+    public class ASRock : MotherBoard
     {
-        string model = "ASRock H310CM-DVS";
-        public override string Model
+        public int MemorySlotsCount { get; set; }
+        public int MaximumMemoryCapacity { get; set; }
+        public ASRock( string model, int memoryslotscount, int maximummemorycapacity ) : base( model )
         {
-            get => model;
-            set => model = value;
+            if ( memoryslotscount <= 0 || maximummemorycapacity <= 0 )
+            {
+                throw new ArgumentException( "Data entered incorrectly" );
+            }
+            MaximumMemoryCapacity = maximummemorycapacity;
+            MemorySlotsCount = memoryslotscount;
         }
-        int numbermemoryslots = 2;
-        public override int numberMemorySlots
+        public override string GetComponentInfo()
         {
-            get => numbermemoryslots;
-            set => numbermemoryslots = value;
-        }
-        int maximummemorycapacity = 32;
-        public override int maximumMemoryCapacity
-        {
-            get => maximummemorycapacity;
-            set => maximummemorycapacity = value;
-        }
-        public override void GetComponentInfo()
-        {
-            base.GetComponentInfo();
-            Console.WriteLine($"Motherboard: {Model}, number of memory slots {numberMemorySlots}, maximum memory capacity {maximumMemoryCapacity}");
+            return $"{base.GetComponentInfo()}, number of memory slots {MemorySlotsCount}, maximum memory capacity {MaximumMemoryCapacity}";
         }
     }
 }

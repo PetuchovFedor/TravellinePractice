@@ -1,29 +1,21 @@
-﻿namespace Homework2
+﻿namespace Homework2.Motherboard
 {
-    public class Esonic: MotherBoard
-    {
-        string model = "Esonic G41CPL3";
-        public override string Model
+    public class Esonic : MotherBoard
+    {        
+        public int MemorySlotsCount { get; set; }
+        public int MaximumMemoryCapacity { get; set; }
+        public Esonic (string model, int memoryslotscount, int maximummemorycapacity ) : base(model)
         {
-            get => model; 
-            set => model = value;
+            if ( memoryslotscount <= 0 || maximummemorycapacity <= 0 )
+            {
+                throw new ArgumentException( "Data entered incorrectly" );
+            }
+            MaximumMemoryCapacity = maximummemorycapacity;
+            MemorySlotsCount = memoryslotscount;
         }
-        int numbermemoryslots = 2;
-        public override int numberMemorySlots
+        public override string GetComponentInfo()
         {
-            get => numbermemoryslots;
-            set => numbermemoryslots = value;
-        }
-        int maximummemorycapacity = 8;
-        public override int maximumMemoryCapacity
-        {
-            get => maximummemorycapacity;
-            set => maximummemorycapacity = value;
-        }
-        public override void GetComponentInfo()
-        {
-            base.GetComponentInfo();
-            Console.WriteLine($"Motherboard: model {Model}, number of memory slots {numberMemorySlots}, maximum memory capacity {maximumMemoryCapacity}");
+            return $"{base.GetComponentInfo()}, number of memory slots {MemorySlotsCount}, maximum memory capacity {MaximumMemoryCapacity}";
         }
     }
 }

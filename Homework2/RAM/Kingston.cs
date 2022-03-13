@@ -1,29 +1,21 @@
-﻿namespace Homework2
+﻿namespace Homework2.RAM
 {
-    public class Kingston: RAM
+    public class Kingston : RAM
     {
-        string model = "Kingston HyperX FURY Black";
-        public override string Model
+        public double MemoryModuleCapacity { get; set; }
+        public int ModuleCount { get; set; }
+        public Kingston( string model, double memorymodulecapacity, int modulecount ) : base( model )
         {
-            get => model;
-            set => model = value;
+            if ( memorymodulecapacity <= 0 || modulecount <= 0 )
+            {
+                throw new ArgumentException( "Data entered incorrectly" );
+            }
+            MemoryModuleCapacity = memorymodulecapacity;
+            ModuleCount = modulecount;
         }
-        double memorymodulecapacity = 5;
-        public override double memoryModuleCapacity
+        public override string GetComponentInfo()
         {
-            get => memorymodulecapacity;
-            set => memorymodulecapacity = value;
-        }
-        int numbermodules = 1;
-        public override int numberModules
-        {
-            get => numbermodules;
-            set => numbermodules = value;
-        }
-        public override void GetComponentInfo()
-        {
-            base.GetComponentInfo();
-            Console.WriteLine($"RAM: model {Model}, memory module capacity {memoryModuleCapacity}, number of modules {numberModules}");
+            return $"{base.GetComponentInfo()},  memory module capacity {MemoryModuleCapacity}, number of modules {ModuleCount}";
         }
     }
 }

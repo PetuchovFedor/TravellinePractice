@@ -6,14 +6,13 @@ public class Program
     {
         Computer computer = new();
         try
-        {           
-            computer.ComponentCkeck();
+        {
             Console.WriteLine("Computer components information:");
             computer.GetComponentInfo();
         }
         catch (ArgumentException ex)
         {
             Console.WriteLine(ex);
-        }       
+        }
     }
 }

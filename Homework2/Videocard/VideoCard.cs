@@ -1,20 +1,16 @@
-﻿namespace Homework2
+﻿namespace Homework2.VideoCard
 {
-    public abstract class VideoCard: IGetAndCheckComponentInfo
+    public class VideoCard : IGetInfo
     {
-        public abstract string Model { get; set; }
-        public abstract int videoMemoryCapacity { get; set; }
-        public abstract double maximumMemoryBandwidth { get; set; }
-        public virtual void GetComponentInfo()
+        private readonly string _model;
+        public string Model => _model;
+        public VideoCard( string model )
         {
-
+            _model = model ?? throw new ArgumentException( nameof( model ) );
         }
-        public void ComponentCkeck()
+        public virtual string GetComponentInfo()
         {
-            if (Model == null || videoMemoryCapacity <= 0 || maximumMemoryBandwidth <= 0)
-            {
-                throw new ArgumentException("Data entered incorrectly");
-            }
+            return $"Videocard: {_model}";
         }
     }
 }
