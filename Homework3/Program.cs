@@ -19,7 +19,7 @@ namespace Homework3
             Console.WriteLine( "add-student-in-group - add studend in group" );
             Console.WriteLine( "delete-student-from-group - delete student from group" );
             Console.WriteLine( "delete-student - delete student" );
-            Console.WriteLine( "get-student-from-group - show a list of students in a group" );
+            Console.WriteLine( "get-students-from-group - show a list of students in a group" );
             Console.WriteLine( "get-groups - show a list of university groups" );
             Console.WriteLine( "add-group - add group" );
             Console.WriteLine( "delete-group - delete group" );
