@@ -1,0 +1,16 @@
+<p #myName>Hello, {{name}}</p>
+<p *ngIf="showName">Hello, {{myName.textContent}}</p>
+<div>
+  <app-item
+    *ngFor="let task of tasks" 
+    [text]="task"
+    (onDeleteTask)="onDelete($event)"></app-item>
+</div>
+<p>{{applesNumber}}</p>
+<button (click)="addApple()">Больше яблок!</button>
+
+<form #myForm="ngForm">
+  <input ngModel name="task" type="text" placeholder="Введите задачу">
+  <button (click)="addTask(myForm)">Add task</button>
+</form>
+
