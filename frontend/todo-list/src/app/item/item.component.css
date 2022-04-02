@@ -1,0 +1,31 @@
+.task
+{
+    max-width: 550px;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.task__text
+{
+    font: normal 400 15px 'Times New Roman';
+    width: 150px;
+    margin-left: 10px;
+}
+
+.button__position
+{
+    position: relative;
+    left: 250px;
+}
+
+.button
+{
+    max-width: 200px;
+    max-height: 35px;
+    border-radius: 5px;
+    background-color: #0000ff;
+    font: normal 400 15px 'Times New Roman';
+    color:aliceblue;
+}

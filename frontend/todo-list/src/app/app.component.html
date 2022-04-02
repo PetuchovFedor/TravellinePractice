@@ -1,16 +1,27 @@
-<p #myName>Hello, {{name}}</p>
-<p *ngIf="showName">Hello, {{myName.textContent}}</p>
-<div>
-  <app-item
-    *ngFor="let task of tasks" 
-    [text]="task"
-    (onDeleteTask)="onDelete($event)"></app-item>
+<div class="main">
+  <div  class="block" *ngIf="showCompletedTasks">
+    <h1 class="block__title">To do:</h1>
+    <app-item
+      class="block__list"
+      *ngFor="let task of tasks"
+      [task]="task"
+      (onDeleteTask)="onDelete($event)"
+      (onCompleteTask)="onComplete($event)">
+    </app-item>
+    <button class="button" (click)="show()">Show list of completed task</button>
+  </div>
+  <div class="block" *ngIf="!showCompletedTasks">
+    <h1 class="block__title">Completed tasks:</h1>
+    <app-item
+      class="block__list"
+      *ngFor = "let task of completedTasks"
+      [task]="task">
+    </app-item>
+    <button class="button" (click)="show()">Show to do list</button> 
+  </div> 
+  <form  class="form" #myForm="ngForm" *ngIf="showCompletedTasks">
+    <input ngModel name="task" type="task" placeholder="Введите задачу">
+    <button class="form__button" (click)="addTask(myForm)">Add task</button>
+  </form>
+
 </div>
-<p>{{applesNumber}}</p>
-<button (click)="addApple()">Больше яблок!</button>
-
-<form #myForm="ngForm">
-  <input ngModel name="task" type="text" placeholder="Введите задачу">
-  <button (click)="addTask(myForm)">Add task</button>
-</form>
-

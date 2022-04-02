@@ -1,2 +1,7 @@
-<p>{{text}}</p>
-<button (click)="delete()">Delete</button>
+<div class="task">
+  <p class="task__text">{{task.name}}</p>
+  <div class="button__position">
+    <button class="button" (click)="delete()">Delete</button>
+    <button class="button" (click)="complete()">Complete</button>
+  </div>
+</div>
